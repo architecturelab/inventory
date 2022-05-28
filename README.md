@@ -131,6 +131,6 @@
       "dependenciaId": 3
       }
 - Listar todos
-  - URL: GET- http://34.122.37.103/inventory/items
+  - URL: GET- http://34.122.37.103/inventory/items-plain
 - Consultar por Id:
   - URL: GET- http://34.122.37.103/inventory/item/{id}
