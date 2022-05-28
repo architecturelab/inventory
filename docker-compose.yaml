@@ -6,6 +6,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=inventory
+    networks:
+      - default
     ports:
       - 3309:3306
     volumes:
@@ -14,6 +16,8 @@ services:
   zookeeper:
     image:
       wurstmeister/zookeeper
+    networks:
+      - default
     ports:
       - "2181:2181"
 
@@ -22,6 +26,8 @@ services:
       wurstmeister/kafka
     depends_on:
       - zookeeper
+    networks:
+      - default
     ports:
       - "9092:9092"
     environment:
@@ -36,6 +42,8 @@ services:
 
   prometheus:
     image: prom/prometheus:v2.30.3
+    networks:
+      - default
     ports:
       - 9000:9090
     volumes:
@@ -50,10 +58,18 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: on-failure
+    networks:
+      - default
     ports:
-      - 8080:8080
+      - 8082:80
     volumes:
       - .m2:/root/.m2
+
 volumes:
   db:
   prometheus-data:
+
+networks:
+  default:
+    external:
+      name: local-environment

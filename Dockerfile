@@ -12,4 +12,4 @@ RUN mkdir /app
 
 COPY --from=build /home/gradle/src/application/build/libs/inventory-application-0.0.1-SNAPSHOT.jar /app/spring-boot-application.jar
 
-ENTRYPOINT ["java","-jar","/app/spring-boot-application.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=prod","-jar","/app/spring-boot-application.jar"]
