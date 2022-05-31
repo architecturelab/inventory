@@ -1,7 +1,7 @@
 piVersion: v1
 kind: Service
 metadata:
-  name: backend-lb
+  name: inventory
 spec:
   type: LoadBalancer
   ports:
@@ -10,4 +10,4 @@ spec:
       targetPort: 80
       name: http
   selector:
-    role: backend
+    role: inventory
