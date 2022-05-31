@@ -39,7 +39,7 @@ public class ModelUseCasesImpl implements ModelUseCases{
 
     @Override
     public ModelInput update(ModelInput modelInput) {
-        Optional<Model> ModelData = modelRepository.getById(modelInput.getMarcaId());
+        Optional<Model> ModelData = modelRepository.getById(modelInput.getModeloId());
         if (ModelData.isPresent()){
             Model model = ModelData.get();
             model.setBrand(new Brand(modelInput.getMarcaId()));
