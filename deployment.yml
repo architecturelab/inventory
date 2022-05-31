@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      role: backend
+      role: inventory
   minReadySeconds: 20
   strategy:
     rollingUpdate:
@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       labels:
-        role: backend
+        role: inventory
     spec:
       containers:
         - name: inventory
