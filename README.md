@@ -4,7 +4,7 @@
 
 ### CLASE
 - Crear
-  - URL: POST- http://34.122.37.103/inventory/type
+  - URL: POST- http://35.232.133.213/inventory/type
   - Ejemplo request:
     ```json
     {
@@ -13,7 +13,7 @@
     "vigente": "si"
     }
 - Actualizar
-  - URL: PUT- http://34.122.37.103/inventory/type
+  - URL: PUT- http://35.232.133.213/inventory/type
   - Ejemplo request:
     ```json
     {
@@ -23,12 +23,12 @@
     "vigente": "si"
     }
 - Listar todos
-  - URL: GET- http://34.122.37.103/inventory/types
+  - URL: GET- http://35.232.133.213/inventory/types
 - Consultar por Id:
-  - URL: GET- http://34.122.37.103/inventory/type/{id}
+  - URL: GET- http://35.232.133.213/inventory/type/{id}
 ### MARCA
 - Crear
-  - URL: POST- http://34.122.37.103/inventory/brand
+  - URL: POST- http://35.232.133.213/inventory/brand
     - Ejemplo request:
       ```json
       { 
@@ -37,7 +37,7 @@
       "vigente": "si"
       }
 - Actualizar
-  - URL: PUT- http://34.122.37.103/inventory/brand
+  - URL: PUT- http://35.232.133.213/inventory/brand
   - Ejemplo request:
     ```json
     {
@@ -47,12 +47,12 @@
     "vigente": "si"
     }
 - Listar todos
-    - URL: GET- http://34.122.37.103/inventory/brands
+    - URL: GET- http://35.232.133.213/inventory/brands
 - Consultar por Id:
-    - URL: GET- http://34.122.37.103/inventory/brand/{id}
+    - URL: GET- http://35.232.133.213/inventory/brand/{id}
 ### MODELO
 - Crear
-- URL: POST- http://34.122.37.103/inventory/model
+- URL: POST- http://35.232.133.213/inventory/model
   - Ejemplo request:
     ```json
     { 
@@ -62,7 +62,7 @@
     "vigente": "si"
     }
 - Actualizar
-  - URL: PUT- http://34.122.37.103/inventory/model
+  - URL: PUT- http://35.232.133.213/inventory/model
     - Ejemplo request:
       ```json
       {
@@ -73,12 +73,12 @@
       "vigente": "si"
       }
 - Listar todos
-  - URL: GET- http://34.122.37.103/inventory/models
+  - URL: GET- http://35.232.133.213/inventory/models
 - Consultar por Id:
-  - URL: GET- http://34.122.37.103/inventory/model/{id}
+  - URL: GET- http://35.232.133.213/inventory/model/{id}
 ### DEPENDENCIA
 - Crear
-  - URL: POST- http://34.122.37.103/inventory/dependency
+  - URL: POST- http://35.232.133.213/inventory/dependency
     - Ejemplo request:
       ```json
       { 
@@ -86,7 +86,7 @@
       "vigente": "si"
       }
 - Actualizar
-  - URL: PUT- http://34.122.37.103/inventory/dependency
+  - URL: PUT- http://35.232.133.213/inventory/dependency
     - Ejemplo request:
       ```json
       {
@@ -95,12 +95,12 @@
       "vigente": "si"
       }
 - Listar todos
-    - URL: GET- http://34.122.37.103/inventory/dependencies
+    - URL: GET- http://35.232.133.213/inventory/dependencies
 - Consultar por Id:
-    - URL: GET- http://34.122.37.103/inventory/dependency/{id}
+    - URL: GET- http://35.232.133.213/inventory/dependency/{id}
 ### ITEM
 - Crear
-  - URL: POST- http://34.122.37.103/inventory/item
+  - URL: POST- http://35.232.133.213/inventory/item
     - Ejemplo request:
       ```json
       { 
@@ -115,7 +115,7 @@
       "dependenciaId": <<dependenciaId>>
       }
 - Actualizar
-  - URL: PUT- http://34.122.37.103/inventory/item
+  - URL: PUT- http://35.232.133.213/inventory/item
     - Ejemplo request:
       ```json
       {
@@ -131,6 +131,6 @@
       "dependenciaId": 3
       }
 - Listar todos
-  - URL: GET- http://34.122.37.103/inventory/items-plain
+  - URL: GET- http://35.232.133.213/inventory/items-plain
 - Consultar por Id:
-  - URL: GET- http://34.122.37.103/inventory/item/{id}
+  - URL: GET- http://35.232.133.213/inventory/item/{id}
