@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory-lb
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      name: http
+  selector:
+    role: inventory
+  type: LoadBalancer
+  loadBalancerIP: "104.197.60.202"

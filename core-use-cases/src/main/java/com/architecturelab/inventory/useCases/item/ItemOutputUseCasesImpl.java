@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class GetItemOutputUseCaseImpl implements GetItemOutputUseCase {
+public class ItemOutputUseCasesImpl implements ItemOutputUseCases {
 
     @Autowired
     private MessageProducer messageProducer;

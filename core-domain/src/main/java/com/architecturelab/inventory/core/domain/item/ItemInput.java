@@ -1,17 +1,21 @@
 package com.architecturelab.inventory.core.domain.item;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
 public class ItemInput {
 
-    private Integer claseId;
+    private Long itemId;
 
-    private Integer marcaId;
+    private Long claseId;
 
-    private Integer modeloId;
+    private Long marcaId;
+
+    private Long modeloId;
 
     private String serial;
 
@@ -27,7 +31,7 @@ public class ItemInput {
 
     private String observacion;
 
-    private String dependenciaId;
+    private Long dependenciaId;
 
     private String usuarioCreacion;
 

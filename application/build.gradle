@@ -16,6 +16,7 @@ description = 'application'
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator:2.6.6'
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.9.0'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.6.6'
     implementation project(':inventory-core-domain')
     implementation project(':inventory-core-use-cases')

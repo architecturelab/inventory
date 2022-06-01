@@ -8,7 +8,6 @@ import java.io.IOException;
 @Service
 public class MessageConsumer {
 
-    @KafkaListener(topics = "${topic.name}")
     public void consume(String msg) throws IOException {
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Message received: " + msg);
     }
