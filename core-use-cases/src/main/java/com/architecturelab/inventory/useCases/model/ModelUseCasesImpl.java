@@ -1,6 +1,7 @@
 package com.architecturelab.inventory.useCases.model;
 
 import com.architecturelab.inventory.core.domain.model.ModelInput;
+import com.architecturelab.inventory.core.domain.model.ModelOutput;
 import com.architecturelab.inventory.infra.jpa.domain.Brand;
 import com.architecturelab.inventory.infra.jpa.domain.Model;
 import com.architecturelab.inventory.infra.jpa.repository.model.ModelJpaRepository;
@@ -61,40 +62,42 @@ public class ModelUseCasesImpl implements ModelUseCases{
     }
 
     @Override
-    public List<ModelInput> getAll() {
+    public List<ModelOutput> getAll() {
 
         List<Model> Models = (List<Model>) modelRepository.getAll();
 
-        List<ModelInput> inputs = new ArrayList<ModelInput>();
+        List<ModelOutput> outputs = new ArrayList<ModelOutput>();
         Models.forEach(m-> {
-            ModelInput model = new ModelInput(
+            ModelOutput model = new ModelOutput(
                     m.getId(),
                     m.getBrand().getId(),
+                    m.getBrand().getNombre(),
                     m.getNombre(),
                     m.getVidaUtil(),
                     m.getVigente()
             );
-            inputs.add(model);
+            outputs.add(model);
         });
-        if (inputs.isEmpty()) {
-            return new ArrayList<ModelInput>();
+        if (outputs.isEmpty()) {
+            return new ArrayList<ModelOutput>();
         }
-        return inputs;
+        return outputs;
     }
 
     @Override
-    public ModelInput getById(Long id) {
+    public ModelOutput getById(Long id) {
         Optional<Model> ModelData = modelRepository.getById(id);
         if (ModelData.isPresent()) {
             Model model = ModelData.get();
-            ModelInput input = new ModelInput(
+            ModelOutput output = new ModelOutput(
                     model.getId(),
                     model.getBrand().getId(),
+                    model.getBrand().getNombre(),
                     model.getNombre(),
                     model.getVidaUtil(),
                     model.getVigente()
             );
-            return input;
+            return output;
         }
         return null;
     }

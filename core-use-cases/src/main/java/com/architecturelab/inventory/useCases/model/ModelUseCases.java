@@ -1,6 +1,7 @@
 package com.architecturelab.inventory.useCases.model;
 
 import com.architecturelab.inventory.core.domain.model.ModelInput;
+import com.architecturelab.inventory.core.domain.model.ModelOutput;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface ModelUseCases {
 
     public ModelInput update(ModelInput modelInput);
 
-    public List<ModelInput> getAll();
+    public List<ModelOutput> getAll();
 
-    public ModelInput getById(Long id);
+    public ModelOutput getById(Long id);
 }
