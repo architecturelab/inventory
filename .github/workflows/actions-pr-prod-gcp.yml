@@ -2,7 +2,7 @@
 #
 # To configure this workflow:
 #
-# 1. Ensure that your repository contains the necessary configuration for your Google Kubernetes Engine cluster, including deployment.yml, kustomization.yml, service.yml, etc.
+# 1. Ensure that your repository contains the necessary configuration for your Google Kubernetes Engine cluster, including deployment.yml, kustomization-qa.yml, service.yml, etc.
 #
 # 2. Create and configure a Workload Identity Provider for GitHub (https://github.com/google-github-actions/auth#setting-up-workload-identity-federation)
 #
@@ -10,10 +10,10 @@
 #
 # For more support on how to run the workflow, please visit https://github.com/google-github-actions/setup-gcloud/tree/master/example-workflows/gke-kustomize
 
-name: Build and Deploy to GKE
+name: Build and Deploy to GKE PR PROD
 
 on:
-  push:
+  pull_request:
     branches:
       - master
 
@@ -24,7 +24,8 @@ env:
   GKE_ZONE: us-central1-c   # TODO: update to cluster zone
   DEPLOYMENT_NAME: inventory # TODO: update to deployment name
   REPOSITORY: quickstart-docker-repo # TODO: update to Artifact Registry docker repository
-  IMAGE: static-site
+  IMAGE: inventory
+  PROFILE: prod
 
 
 jobs:
@@ -75,6 +76,7 @@ jobs:
             --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" \
+            --build-arg PROFILE=${{ env.PROFILE }} \
             .
       # Push the Docker image to Google Artifact Registry
       - name: Publish
@@ -90,6 +92,6 @@ jobs:
         run: |-
           # replacing the image name in the k8s template
           ./kustomize edit set image LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA
-          ./kustomize build . | kubectl apply -f -
+          ./kustomize build ci/overlays/prod | kubectl apply -f -
           kubectl rollout status deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
