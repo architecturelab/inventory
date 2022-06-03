@@ -3,7 +3,9 @@ package com.architecturelab.inventory.application.controller;
 import com.architecturelab.inventory.core.domain.brand.BrandInput;
 import com.architecturelab.inventory.core.domain.dependency.DependencyInput;
 import com.architecturelab.inventory.core.domain.item.ItemInput;
+import com.architecturelab.inventory.core.domain.item.ItemOutput;
 import com.architecturelab.inventory.core.domain.model.ModelInput;
+import com.architecturelab.inventory.core.domain.model.ModelOutput;
 import com.architecturelab.inventory.core.domain.type.TypeInput;
 import com.architecturelab.inventory.infra.jpa.domain.Dependency;
 import com.architecturelab.inventory.useCases.brand.BrandUseCases;
@@ -40,11 +42,10 @@ public class InventoryController {
 
     @Autowired
     private DependencyUseCases dependencyUseCases;
-
     @GetMapping("/items-plain")
-    public ResponseEntity<List<ItemInput>> getAllItemsPlain() {
+    public ResponseEntity<List<ItemOutput>> getAllItems() {
         try {
-            List<ItemInput> items = itemInputUseCases.getAll();
+            List<ItemOutput> items = itemOutputUseCases.getAll();
             if (items.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -54,16 +55,10 @@ public class InventoryController {
         }
     }
 
-    @GetMapping("/items")
-    public String getAllItems() {
-        //getItemOutputUseCase.execute();
-        return "Get items";
-    }
-
     @GetMapping("/item/{id}")
-    public ResponseEntity<ItemInput> getItemById(@PathVariable Long id) {
+    public ResponseEntity<ItemOutput> getItemById(@PathVariable Long id) {
         try {
-            ItemInput item = itemInputUseCases.getById(id);
+            ItemOutput item = itemOutputUseCases.getById(id);
             if (item != null) {
                 return new ResponseEntity<>(item, HttpStatus.OK);
             }
@@ -154,11 +149,11 @@ public class InventoryController {
     // Model
 
     @GetMapping("/model/{id}")
-    public ResponseEntity<ModelInput> getModelById(@PathVariable Long id) {
+    public ResponseEntity<ModelOutput> getModelById(@PathVariable Long id) {
         try {
-            ModelInput modelInput = modelUseCases.getById(id);
-            if (modelInput != null) {
-                return new ResponseEntity<>(modelInput, HttpStatus.OK);
+            ModelOutput modelOutput = modelUseCases.getById(id);
+            if (modelOutput != null) {
+                return new ResponseEntity<>(modelOutput, HttpStatus.OK);
             }
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e) {
@@ -192,9 +187,9 @@ public class InventoryController {
     }
 
     @GetMapping("/models")
-    public ResponseEntity<List<ModelInput>> getAllModels() {
+    public ResponseEntity<List<ModelOutput>> getAllModels() {
         try {
-            List<ModelInput> modelInputs = modelUseCases.getAll();
+            List<ModelOutput> modelInputs = modelUseCases.getAll();
             if (modelInputs.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
