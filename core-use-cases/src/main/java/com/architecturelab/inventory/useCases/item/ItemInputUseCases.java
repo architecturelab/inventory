@@ -13,8 +13,4 @@ public interface ItemInputUseCases {
 
     public ItemInput update(ItemInput itemInput);
 
-    public List<ItemInput> getAll();
-
-    public ItemInput getById(Long id);
-
 }
